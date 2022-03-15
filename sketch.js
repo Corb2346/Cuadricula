@@ -1,6 +1,7 @@
   const botonClear = document.querySelector('#limpiaPantalla');
   botonClear.addEventListener('click',limpiaPantalla);
   
+  let click = true; 
   let colorInput = document.getElementById("colorHex");
   let hexOutput = document.getElementById("hexa");
 
@@ -98,15 +99,16 @@
           celda.addEventListener('mousemove',cambiarColor); 
         
           function cambiarColor(){
+            if(click){
+              if(colorChoice === 'random'){
+  
+                celda.style['background-color']= `hsl(${Math.random() * 360}, 100%,50%)`;
+    
+              } else 
+    
+              celda.style['background-color']= colorChoice;
+            }
 
-            if(colorChoice === 'random'){
-  
-              celda.style['background-color']= `hsl(${Math.random() * 360}, 100%,50%)`;
-  
-            } else 
-  
-            celda.style['background-color']= colorChoice;
-  
             }
            
             
@@ -186,14 +188,17 @@
         celda.addEventListener('mousemove',cambiarColor); 
         
         function cambiarColor(){
-          if(colorChoice === 'random'){
+          if(click){
+            if(colorChoice === 'random'){
 
-            celda.style['background-color']= `hsl(${Math.random() * 360}, 100%,50%)`;
+              celda.style['background-color']= `hsl(${Math.random() * 360}, 100%,50%)`;
+  
+            } else 
+  
+            celda.style['background-color']= colorChoice;
 
-          } else 
-
-          celda.style['background-color']= colorChoice;
-
+          };
+        
           }
 
         hilera.appendChild(celda);
@@ -235,5 +240,16 @@
     table.remove();
     
   }
+
+document.querySelector("body").addEventListener("click", () => {
+click = !click;
+let coloring = document.querySelector("#ColoringOrNot");
+if(click){
+
+  coloring.value = "Mode: Coloring";
+} else 
+ 
+  coloring.value = "Mode: Not Coloring";
+});
 
   genera_tabla();
