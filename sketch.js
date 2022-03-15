@@ -1,11 +1,10 @@
   const botonClear = document.querySelector('#limpiaPantalla');
   botonClear.addEventListener('click',limpiaPantalla);
   
-  let color = 'black';
-  let click = true; 
+  let colorChoice = 'black';
 
   function changeColor(choice){
-    color = choice;
+    colorChoice = choice;
 
   }
 
@@ -87,17 +86,16 @@
         
           function cambiarColor(){
 
-            if(click){
-            if(color === 'random'){
+            if(colorChoice === 'random'){
   
               celda.style['background-color']= `hsl(${Math.random() * 360}, 100%,50%)`;
   
             } else 
   
-            celda.style['background-color']= color;
+            celda.style['background-color']= colorChoice;
   
             }
-           }
+           
             
           
           hilera.appendChild(celda);
@@ -135,12 +133,6 @@
 
     function genera_tabla() {
 
-      document.querySelector("body").addEventListener("click", () => {
-
-        click = !click;
-    
-      });
-    
     
       let cambiarBorde = document.querySelector("#quitarBordes");
       cambiarBorde.onclick = function(){
@@ -181,13 +173,13 @@
         celda.addEventListener('mousemove',cambiarColor); 
         
         function cambiarColor(){
-          if(color === 'random'){
+          if(colorChoice === 'random'){
 
             celda.style['background-color']= `hsl(${Math.random() * 360}, 100%,50%)`;
 
           } else 
 
-          celda.style['background-color']= color;
+          celda.style['background-color']= colorChoice;
 
           }
 
