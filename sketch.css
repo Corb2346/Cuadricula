@@ -296,3 +296,10 @@ body{
             filter: drop-shadow(16px 16px 20px rgb(248, 220, 97));
             filter: blur(15px);
         }
+
+        /*para los cambios de fondos en el javascript */
+
+        .colorBlanco{
+
+            background-color: red;
+        }

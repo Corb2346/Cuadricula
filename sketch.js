@@ -1,21 +1,20 @@
   const botonClear = document.querySelector('#limpiaPantalla');
   botonClear.addEventListener('click',limpiaPantalla);
   
+  let color = 'black';
+  let click = true; 
+
+  function changeColor(choice){
+    color = choice;
+
+  }
+
+
   function limpiaPantalla(){
 
     botonClear.onmouseover = actualizaTabla();
 
     genera_tabla();
-  }
-
-  const colorAleatorio = document.querySelector("#opcionColorRainbow");
-  colorAleatorio.addEventListener("click",colorAlea);
-
-  function colorAlea(){
-
-    let numAleatorio = Math.floor((Math.random() * (255 - 0 + 1)) + 0);
-    console.log(numAleatorio);
-    
   }
 
     const container = document.querySelector('#container');
@@ -80,16 +79,25 @@
 
           let celda = document.createElement("td");
 
-          celda.addEventListener('mousemove',cambiarColorC);
+          celda.addEventListener('mousemove',cambiarColor);
           celda.style['background-color']= 'white';
           celda.style.borderColor = 'F3F3F3','1';
 
-          
-          function cambiarColorC(){
-            celda.style['background-color']= 'black';
-            }
+          celda.addEventListener('mousemove',cambiarColor); 
         
+          function cambiarColor(){
 
+            if(click){
+            if(color === 'random'){
+  
+              celda.style['background-color']= `hsl(${Math.random() * 360}, 100%,50%)`;
+  
+            } else 
+  
+            celda.style['background-color']= color;
+  
+            }
+           }
             
           
           hilera.appendChild(celda);
@@ -126,8 +134,14 @@
 
 
     function genera_tabla() {
-      
 
+      document.querySelector("body").addEventListener("click", () => {
+
+        click = !click;
+    
+      });
+    
+    
       let cambiarBorde = document.querySelector("#quitarBordes");
       cambiarBorde.onclick = function(){
         cambiaBorde();
@@ -163,40 +177,20 @@
         let celda = document.createElement("td");
         celda.style['background-color']= 'white';
         celda.style.borderColor = 'F3F3F3','1';
-
-        let borradorBoton = document.querySelector("#borrador");
-
-        borradorBoton.onclick = function botonBorrar(colRecivido){
-
-        console.log("si sirve este boton");
-        let celdaEdit = document.getElementsByTagName('td');
-        console.log(celdaEdit);
-        celdaEdit.classList.add("classColor");
-          
         
-        }
-
+        celda.addEventListener('mousemove',cambiarColor); 
         
-        celda.addEventListener('mousemove',cambiarColorC); 
-        
-        /*function Color(){
-          let colorPasar =0;
-          cambiarColorC(colorPasar);
-          numAleatorio();
-          
-        }*/
+        function cambiarColor(){
+          if(color === 'random'){
 
-        function cambiarColorC(){
-          let valorColorRecivido = 0; 
-          celda.style['background-color']= "rgb(" + valorColorRecivido + "," + valorColorRecivido + "," + valorColorRecivido + ")";
+            celda.style['background-color']= `hsl(${Math.random() * 360}, 100%,50%)`;
+
+          } else 
+
+          celda.style['background-color']= color;
 
           }
 
-          function numAleatorio(){
-            let numAleatorio = Math.floor((Math.random() * (255 - 0 + 1)) + 0);
-            console.log(numAleatorio,numAleatorio,numAleatorio);
-          }
-    
         hilera.appendChild(celda);
       }
   

@@ -26,13 +26,14 @@
                 <div id="valorPantalla" class = "numerosEdit" > 0</div>
             </div>
 
-            <button id="opcionColorNegro"> BlackColor </button>
+            <button id="opcionColorNegro" onclick=" changeColor('black')"> BlackColor </button>
 
-            <button id="opcionColorRainbow">RainBowColor </button>
+            <button id="opcionColorRainbow" onclick=" changeColor('random')">RainBowColor </button>
 
-            <button id="opcionColorRGBHexa">YourColor</button>
+            <input type="text" id ="hex">
+            <input type="color" id ="colorHexD">
 
-            <button id="borrador" onclick="borrador('30')"> Eraser </button>
+            <button id="borrador" onclick=" changeColor('white')"> Eraser </button>
 
             <button id="limpiaPantalla"> Clean</button>
 
