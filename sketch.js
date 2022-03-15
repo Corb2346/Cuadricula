@@ -1,14 +1,16 @@
   const botonClear = document.querySelector('#limpiaPantalla');
   botonClear.addEventListener('click',limpiaPantalla);
   
-  let colorInput = document.getElementById("colorHexD");
+  let colorInput = document.getElementById("colorHex");
   let hexOutput = document.getElementById("hexa");
 
   colorInput.addEventListener("input",muestraColor);
 
   function muestraColor(){
 
-    hexOutput.innerHTML = colorInput.value;
+    let colorInputValue = colorInput.value;
+    hexOutput.value = colorInputValue;
+    changeColor(colorInput.value);
   };
 
 
