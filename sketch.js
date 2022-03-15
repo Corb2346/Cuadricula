@@ -1,8 +1,18 @@
   const botonClear = document.querySelector('#limpiaPantalla');
   botonClear.addEventListener('click',limpiaPantalla);
   
-  let colorChoice = 'black';
+  let colorInput = document.getElementById("colorHexD");
+  let hexOutput = document.getElementById("hexa");
 
+  colorInput.addEventListener("input",muestraColor);
+
+  function muestraColor(){
+
+    hexOutput.innerHTML = colorInput.value;
+  };
+
+
+  let colorChoice = 'black';
   function changeColor(choice){
     colorChoice = choice;
 
@@ -12,7 +22,8 @@
   function limpiaPantalla(){
 
     botonClear.onmouseover = actualizaTabla();
-
+    rango.value =16;
+    valorPantalla.innerHTML = 16;
     genera_tabla();
   }
 
